@@ -27,11 +27,11 @@ RCT_EXPORT_VIEW_PROPERTY(zIndex, NSInteger)
 RCT_EXPORT_VIEW_PROPERTY(color, MAPinAnnotationColor)
 RCT_EXPORT_VIEW_PROPERTY(image, NSString)
 
-RCT_EXPORT_VIEW_PROPERTY(onPress, RCTBubblingEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onInfoWindowPress, RCTBubblingEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onDragStart, RCTBubblingEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onDrag, RCTBubblingEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onDragEnd, RCTBubblingEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onAPress, RCTBubblingEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onAInfoWindowPress, RCTBubblingEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onADragStart, RCTBubblingEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onADrag, RCTBubblingEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onADragEnd, RCTBubblingEventBlock)
 
 RCT_EXPORT_METHOD(lockToScreen:(nonnull NSNumber *)reactTag x:(int)x y:(int)y) {
     [self.bridge.uiManager addUIBlock:^(__unused RCTUIManager *uiManager, NSDictionary<NSNumber *, UIView *> *viewRegistry) {

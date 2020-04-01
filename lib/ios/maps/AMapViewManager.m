@@ -122,31 +122,31 @@ RCT_EXPORT_METHOD(setStatus:(nonnull NSNumber *)reactTag params:(NSDictionary *)
 
 - (void)mapView:(AMapView *)mapView didSelectAnnotationView:(MAAnnotationView *)view {
     AMapMarker *marker = [mapView getMarker:view.annotation];
-    if (marker.onPress) {
-        marker.onPress(nil);
+    if (marker.onAPress) {
+        marker.onAPress(nil);
     }
 }
 
 - (void)mapView:(AMapView *)mapView didAnnotationViewCalloutTapped:(MAAnnotationView *)view {
     AMapMarker *marker = [mapView getMarker:view.annotation];
-    if (marker.onInfoWindowPress) {
-        marker.onInfoWindowPress(nil);
+    if (marker.onAInfoWindowPress) {
+        marker.onAInfoWindowPress(nil);
     }
 }
 
 - (void)mapView:(AMapView *)mapView annotationView:(MAAnnotationView *)view didChangeDragState:(MAAnnotationViewDragState)newState
    fromOldState:(MAAnnotationViewDragState)oldState {
     AMapMarker *marker = [mapView getMarker:view.annotation];
-    if (newState == MAAnnotationViewDragStateStarting && marker.onDragStart) {
-        marker.onDragStart(nil);
+    if (newState == MAAnnotationViewDragStateStarting && marker.onADragStart) {
+        marker.onADragStart(nil);
     }
     if (newState == MAAnnotationViewDragStateDragging) {
-        if (marker.onDrag) {
-            marker.onDrag(nil);
+        if (marker.onADrag) {
+            marker.onADrag(nil);
         }
     }
-    if (newState == MAAnnotationViewDragStateEnding && marker.onDragEnd) {
-        marker.onDragEnd(@{
+    if (newState == MAAnnotationViewDragStateEnding && marker.onADragEnd) {
+        marker.onADragEnd(@{
                 @"latitude": @(marker.annotation.coordinate.latitude),
                 @"longitude": @(marker.annotation.coordinate.longitude),
         });
