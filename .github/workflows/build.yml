@@ -6,7 +6,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: npm pack
-      - run: npx react-native init example
+      - run: npx react-native init example --version 0.63.4
         working-directory: ../
       - run: cp index.js ../example/
       - run: cp -r example ../example/
