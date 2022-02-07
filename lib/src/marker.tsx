@@ -69,22 +69,22 @@ export interface MarkerProps {
   /**
    * 点击事件
    */
-  onPress?: () => void;
+  onAPress?: () => void;
 
   /**
    * 拖放开始事件
    */
-  onDragStart?: () => void;
+  onADragStart?: () => void;
 
   /**
    * 拖放进行事件，类似于 mousemove，在结束之前会不断调用
    */
-  onDrag?: () => void;
+  onADrag?: () => void;
 
   /**
    * 拖放结束事件
    */
-  onDragEnd?: (event: NativeSyntheticEvent<LatLng>) => void;
+  onADragEnd?: (event: NativeSyntheticEvent<LatLng>) => void;
 }
 
 export default class extends Component<MarkerProps> {

@@ -7,12 +7,12 @@ interface Props {
   cluster: ClusterParams;
   style?: ViewStyle;
   textStyle?: ViewStyle;
-  onPress?: (params: ClusterParams) => void;
+  onAPress?: (params: ClusterParams) => void;
 }
 
 export default class ClusterView extends React.PureComponent<Props> {
-  onPress = () => {
-    this.props.onPress?.call(this, this.props.cluster);
+  onAPress = () => {
+    this.props.onAPress?.call(this, this.props.cluster);
   };
 
   renderClusterView = () => {
@@ -28,7 +28,7 @@ export default class ClusterView extends React.PureComponent<Props> {
 
   render() {
     return (
-      <Marker onPress={this.onPress} position={this.props.cluster.position}>
+      <Marker onAPress={this.onAPress} position={this.props.cluster.position}>
         {this.renderClusterView()}
       </Marker>
     );

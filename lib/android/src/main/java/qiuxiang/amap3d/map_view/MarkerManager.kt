@@ -24,7 +24,7 @@ internal class MarkerManager : ViewGroupManager<Marker>() {
   }
 
   override fun getExportedCustomBubblingEventTypeConstants(): Map<String, Any> {
-    return getEventTypeConstants("onPress", "onDrag", "onDragStart", "onDragEnd")
+    return getEventTypeConstants("onAPress", "onADrag", "onADragStart", "onADragEnd")
   }
 
   companion object {

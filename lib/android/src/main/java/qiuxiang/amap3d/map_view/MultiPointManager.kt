@@ -18,7 +18,7 @@ internal class MultiPointManager : SimpleViewManager<MultiPoint>() {
   }
 
   override fun getExportedCustomBubblingEventTypeConstants(): Map<String, Any> {
-    return getEventTypeConstants("onPress")
+    return getEventTypeConstants("onAPress")
   }
 
   @ReactProp(name = "items")

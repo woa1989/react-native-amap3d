@@ -50,14 +50,14 @@ internal class MapViewManager : ViewGroupManager<MapView>() {
 
   override fun getExportedCustomBubblingEventTypeConstants(): Map<String, Any> {
     return getEventTypeConstants(
-      "onLoad",
-      "onPress",
-      "onPressPoi",
-      "onLongPress",
-      "onCameraMove",
-      "onCameraIdle",
-      "onLocation",
-      "onCallback",
+      "onALoad",
+      "onAPress",
+      "onAPressPoi",
+      "onALongPress",
+      "onACameraMove",
+      "onACameraIdle",
+      "onALocation",
+      "onACallback",
     )
   }
 

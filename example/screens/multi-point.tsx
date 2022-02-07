@@ -14,7 +14,7 @@ export default () => (
     <MultiPoint
       icon={require("../images/point.png")}
       items={points}
-      onPress={({ nativeEvent }) => alert(nativeEvent.index)}
+      onAPress={({ nativeEvent }) => alert(nativeEvent.index)}
     />
   </MapView>
 );

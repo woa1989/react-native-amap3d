@@ -15,11 +15,11 @@ export default () => {
     <MapView initialCameraPosition={{ zoom: 11.2 }}>
       <Marker
         position={{ latitude: 39.806901, longitude: 116.397972 }}
-        onPress={() => alert("onPress")}
+        onAPress={() => alert("onAPress")}
         icon={require("../images/flag.png")}
       />
       <Marker
-        onPress={() => alert("onPress")}
+        onAPress={() => alert("onAPress")}
         position={{ latitude: 39.806901, longitude: 116.297972 }}
         icon={{
           uri: "https://reactnative.dev/img/pwa/manifest-icon-512.png",
@@ -29,7 +29,7 @@ export default () => {
       />
       <Marker
         position={{ latitude: 39.906901, longitude: 116.397972 }}
-        onPress={() => alert("onPress")}
+        onAPress={() => alert("onAPress")}
       >
         <Text style={style.customView}>{time.toLocaleString()}</Text>
       </Marker>

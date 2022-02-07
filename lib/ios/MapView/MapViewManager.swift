@@ -36,7 +36,7 @@ class MapView: MAMapView, MAMapViewDelegate {
   @objc var onACameraMove: RCTBubblingEventBlock = { _ in }
   @objc var onACameraIdle: RCTBubblingEventBlock = { _ in }
   @objc var onAPress: RCTBubblingEventBlock = { _ in }
-  @objc var onClickPoi: RCTBubblingEventBlock = { _ in }
+  @objc var onAPressPoi: RCTBubblingEventBlock = { _ in }
   @objc var onALongPress: RCTBubblingEventBlock = { _ in }
   @objc var onALocation: RCTBubblingEventBlock = { _ in }
   @objc var onACallback: RCTBubblingEventBlock = { _ in }
@@ -138,7 +138,7 @@ class MapView: MAMapView, MAMapViewDelegate {
 
   func mapView(_: MAMapView!, didTouchPois pois: [Any]!) {
     let poi = pois[0] as! MATouchPoi
-    onClickPoi(["name": poi.name!, "id": poi.uid!, "position": poi.coordinate.json])
+    onAPressPoi(["name": poi.name!, "id": poi.uid!, "position": poi.coordinate.json])
   }
 
   func mapView(_: MAMapView!, didLongPressedAt coordinate: CLLocationCoordinate2D) {

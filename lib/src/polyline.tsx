@@ -46,7 +46,7 @@ export interface PolylineProps {
   /**
    * 点击事件
    */
-  onPress?: () => void;
+  onAPress?: () => void;
 }
 
 export default class extends React.PureComponent<PolylineProps> {

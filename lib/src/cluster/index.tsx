@@ -68,7 +68,7 @@ interface Props {
   /**
    * 聚合点点击事件
    */
-  onPress?: (params: ClusterParams) => void;
+  onAPress?: (params: ClusterParams) => void;
 }
 
 interface State {
@@ -93,7 +93,7 @@ export default class Cluster extends React.PureComponent<Props, State> {
 
   async init() {
     const { radius, points } = this.props;
-    // 如果主线程占用太多计算资源，会导致 ios onLoad 事件无法触发，非常蛋疼
+    // 如果主线程占用太多计算资源，会导致 ios onALoad 事件无法触发，非常蛋疼
     // 暂时想到的解决办法是等一个事件循环
     await new Promise((resolve) => setTimeout(resolve, 0));
     const options = { radius, minZoom: 3, maxZoom: 21 };
@@ -132,7 +132,7 @@ export default class Cluster extends React.PureComponent<Props, State> {
       <ClusterView
         key={cluster.id}
         cluster={cluster}
-        onPress={this.props.onPress}
+        onAPress={this.props.onAPress}
         style={this.props.clusterStyle}
         textStyle={this.props.clusterTextStyle}
       />

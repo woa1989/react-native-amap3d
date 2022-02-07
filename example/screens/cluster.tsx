@@ -14,15 +14,15 @@ export default class Clustering extends Component {
     return (
       <MapView
         ref={(ref) => (this.mapView = ref)}
-        onLoad={() => this.mapView?.moveCamera({ zoom: 8 }, 100)}
-        onCameraIdle={({ nativeEvent }) => {
+        onALoad={() => this.mapView?.moveCamera({ zoom: 8 }, 100)}
+        onACameraIdle={({ nativeEvent }) => {
           this.status = nativeEvent;
           this.cluster?.update(nativeEvent);
         }}
-        onLongPress={() => this.setState({ markers: generateMarkers() })}
+        onALongPress={() => this.setState({ markers: generateMarkers() })}
       >
         <Cluster
-          onPress={({ position }) => {
+          onAPress={({ position }) => {
             this.mapView?.moveCamera(
               {
                 target: position,

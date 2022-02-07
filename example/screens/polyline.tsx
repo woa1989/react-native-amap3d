@@ -26,7 +26,7 @@ export default () => (
     <Polyline
       width={5}
       colors={["#f44336", "#2196f3", "#4caf50"]}
-      onPress={() => alert("onPress")}
+      onAPress={() => alert("onAPress")}
       points={line3}
       gradient
     />

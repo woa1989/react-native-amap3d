@@ -35,41 +35,41 @@ class MapView(context: ThemedReactContext) : TextureMapView(context) {
     locationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE_NO_CENTER)
     map.myLocationStyle = locationStyle
 
-    map.setOnMapLoadedListener { emit(id, "onLoad") }
-    map.setOnMapClickListener { latLng -> emit(id, "onPress", latLng.toJson()) }
-    map.setOnPOIClickListener { poi -> emit(id, "onPressPoi", poi.toJson()) }
-    map.setOnMapLongClickListener { latLng -> emit(id, "onLongPress", latLng.toJson()) }
-    map.setOnPolylineClickListener { polyline -> emit(polylineMap[polyline.id]?.id, "onPress") }
+    map.setOnMapLoadedListener { emit(id, "onALoad") }
+    map.setOnMapClickListener { latLng -> emit(id, "onAPress", latLng.toJson()) }
+    map.setOnPOIClickListener { poi -> emit(id, "onAPressPoi", poi.toJson()) }
+    map.setOnMapLongClickListener { latLng -> emit(id, "onALongPress", latLng.toJson()) }
+    map.setOnPolylineClickListener { polyline -> emit(polylineMap[polyline.id]?.id, "onAPress") }
 
     map.setOnMarkerClickListener { marker ->
-      markerMap[marker.id]?.let { emit(it.id, "onPress") }
+      markerMap[marker.id]?.let { emit(it.id, "onAPress") }
       true
     }
 
     map.setOnMarkerDragListener(object : AMap.OnMarkerDragListener {
       override fun onMarkerDragStart(marker: Marker) {
-        emit(markerMap[marker.id]?.id, "onDragStart")
+        emit(markerMap[marker.id]?.id, "onADragStart")
       }
 
       override fun onMarkerDrag(marker: Marker) {
-        emit(markerMap[marker.id]?.id, "onDrag")
+        emit(markerMap[marker.id]?.id, "onADrag")
       }
 
       override fun onMarkerDragEnd(marker: Marker) {
-        emit(markerMap[marker.id]?.id, "onDragEnd", marker.position.toJson())
+        emit(markerMap[marker.id]?.id, "onADragEnd", marker.position.toJson())
       }
     })
 
     map.setOnCameraChangeListener(object : AMap.OnCameraChangeListener {
       override fun onCameraChangeFinish(position: CameraPosition) {
-        emit(id, "onCameraIdle", Arguments.createMap().apply {
+        emit(id, "onACameraIdle", Arguments.createMap().apply {
           putMap("cameraPosition", position.toJson())
           putMap("latLngBounds", map.projection.visibleRegion.latLngBounds.toJson())
         })
       }
 
       override fun onCameraChange(position: CameraPosition) {
-        emit(id, "onCameraMove", Arguments.createMap().apply {
+        emit(id, "onACameraMove", Arguments.createMap().apply {
           putMap("cameraPosition", position.toJson())
           putMap("latLngBounds", map.projection.visibleRegion.latLngBounds.toJson())
         })
@@ -80,7 +80,7 @@ class MapView(context: ThemedReactContext) : TextureMapView(context) {
       item.customerId.split("_").let {
         emit(
           it[0].toInt(),
-          "onPress",
+          "onAPress",
           Arguments.createMap().apply { putInt("index", it[1].toInt()) },
         )
       }
@@ -89,7 +89,7 @@ class MapView(context: ThemedReactContext) : TextureMapView(context) {
 
     map.setOnMyLocationChangeListener {
       if (it.time > 0) {
-        emit(id, "onLocation", it.toJson())
+        emit(id, "onALocation", it.toJson())
       }
     }
   }
@@ -164,7 +164,7 @@ class MapView(context: ThemedReactContext) : TextureMapView(context) {
   }
 
   private fun callback(id: Double, data: Any) {
-    emit(this.id, "onCallback", Arguments.createMap().apply {
+    emit(this.id, "onACallback", Arguments.createMap().apply {
       putDouble("id", id)
       when (data) {
         is WritableMap -> putMap("data", data)

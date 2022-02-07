@@ -20,7 +20,7 @@ export interface MultiPointProps {
   /**
    * 点击事件
    */
-  onPress?: (event: NativeSyntheticEvent<{ index: number }>) => void;
+  onAPress?: (event: NativeSyntheticEvent<{ index: number }>) => void;
 }
 
 export default (props: MultiPointProps) => {

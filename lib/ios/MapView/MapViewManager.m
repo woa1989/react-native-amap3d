@@ -21,7 +21,7 @@ RCT_REMAP_VIEW_PROPERTY(minZoom, minZoomLevel, double)
 RCT_REMAP_VIEW_PROPERTY(maxZoom, maxZoomLevel, double)
 
 RCT_EXPORT_VIEW_PROPERTY(onAPress, RCTBubblingEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onClickPoi, RCTBubblingEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onAPressPoi, RCTBubblingEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onALongPress, RCTBubblingEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onACameraIdle, RCTBubblingEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onACameraMove, RCTBubblingEventBlock)

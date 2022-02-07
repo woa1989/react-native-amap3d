@@ -120,37 +120,37 @@ export interface MapViewProps extends ViewProps {
   /**
    * 点击事件
    */
-  onPress?: (event: NativeSyntheticEvent<LatLng>) => void;
+  onAPress?: (event: NativeSyntheticEvent<LatLng>) => void;
 
   /**
    * 标注点击事件
    */
-  onPressPoi?: (event: NativeSyntheticEvent<MapPoi>) => void;
+  onAPressPoi?: (event: NativeSyntheticEvent<MapPoi>) => void;
 
   /**
    * 长按事件
    */
-  onLongPress?: (event: NativeSyntheticEvent<LatLng>) => void;
+  onALongPress?: (event: NativeSyntheticEvent<LatLng>) => void;
 
   /**
    * 地图状态改变事件，随地图状态变化不停地触发
    */
-  onCameraMove?: (event: NativeSyntheticEvent<CameraEvent>) => void;
+  onACameraMove?: (event: NativeSyntheticEvent<CameraEvent>) => void;
 
   /**
    * 地图状态改变事件，在停止变化后触发
    */
-  onCameraIdle?: (event: NativeSyntheticEvent<CameraEvent>) => void;
+  onACameraIdle?: (event: NativeSyntheticEvent<CameraEvent>) => void;
 
   /**
    * 地图初始化完成事件
    */
-  onLoad?: (event: NativeSyntheticEvent<void>) => void;
+  onALoad?: (event: NativeSyntheticEvent<void>) => void;
 
   /**
    * 地图定位更新事件
    */
-  onLocation?: (event: NativeSyntheticEvent<GeolocationPosition>) => void;
+  onALocation?: (event: NativeSyntheticEvent<GeolocationPosition>) => void;
 }
 
 const name = "AMapView";
@@ -196,13 +196,13 @@ export default class extends Component<MapViewProps> {
 
   componentDidMount() {
     super.componentDidMount();
-    // 无论如何也要在 1 秒后 setLoaded(true) ，防止 onLoad 事件不触发的情况下显示不正常
+    // 无论如何也要在 1 秒后 setLoaded(true) ，防止 onALoad 事件不触发的情况下显示不正常
     // 目前只在 iOS 上低概率出现
     setTimeout(() => this.setState({ loaded: true }), 1000);
   }
 
   render() {
-    let { style, onLoad } = this.props;
+    let { style, onALoad } = this.props;
     if (!this.state.loaded) {
       style = [style, { width: 1, height: 1 }];
     }
@@ -212,17 +212,17 @@ export default class extends Component<MapViewProps> {
         ref={(ref) => (this.ref = ref)}
         style={style}
         // @ts-ignore: 内部接口
-        onCallback={this.callback}
-        onPress={(event) => {
+        onACallback={this.callback}
+        onAPress={(event) => {
           if (event.nativeEvent.latitude) {
-            this.props.onPress?.call(this, event);
+            this.props.onAPress?.call(this, event);
           }
         }}
-        onLoad={(event) => {
+        onALoad={(event) => {
           // android 地图部分控件不显示的问题在重新 layout 之后会恢复正常。
           // 同时也能修复 ios 地图偶尔出现的 layout 异常
           this.setState({ loaded: true });
-          onLoad?.call(this, event);
+          onALoad?.call(this, event);
         }}
       />
     );

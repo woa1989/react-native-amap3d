@@ -7,7 +7,7 @@ export default () => {
   console.log(markers);
   return (
     <MapView
-      onPress={({ nativeEvent }) => {
+      onAPress={({ nativeEvent }) => {
         setMarkers([...markers, nativeEvent]);
       }}
     >
@@ -16,7 +16,7 @@ export default () => {
           key={`${position.latitude},${position.longitude}`}
           icon={require("../images/flag.png")}
           position={position}
-          onPress={() => {
+          onAPress={() => {
             markers.splice(markers.indexOf(position), 1);
             setMarkers([...markers]);
           }}

@@ -19,7 +19,7 @@ internal class PolylineManager : SimpleViewManager<Polyline>() {
   }
 
   override fun getExportedCustomBubblingEventTypeConstants(): Map<String, Any> {
-    return getEventTypeConstants("onPress")
+    return getEventTypeConstants("onAPress")
   }
 
   @ReactProp(name = "points")

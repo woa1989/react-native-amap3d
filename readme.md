@@ -78,9 +78,9 @@ import { MapView, MapType } from "react-native-amap3d";
 import { MapView } from "react-native-baidumap-sdk";
 
 <MapView
-  onLoad={() => console.log("onLoad")}
-  onPress={({ nativeEvent }) => console.log(nativeEvent)}
-  onCameraIdle={({ nativeEvent }) => console.log(nativeEvent)}
+  onALoad={() => console.log("onALoad")}
+  onAPress={({ nativeEvent }) => console.log(nativeEvent)}
+  onACameraIdle={({ nativeEvent }) => console.log(nativeEvent)}
 />;
 ```
 
@@ -99,7 +99,7 @@ import { MapView, Marker } from "react-native-baidumap-sdk";
   <Marker
     position={{ latitude: 39.806901, longitude: 116.397972 }}
     icon={require("../images/flag.png")}
-    onPress={() => alert("onPress")}
+    onAPress={() => alert("onAPress")}
   />
   <Marker
     position={{ latitude: 39.806901, longitude: 116.297972 }}
@@ -143,8 +143,8 @@ const markers = Array(1000)
 
 <MapView
   ref={(ref) => (this.mapView = ref)}
-  onLoad={() => this.mapView?.moveCamera({ zoom: 8 }, 100)}
-  onCameraIdle={({ nativeEvent }) => {
+  onALoad={() => this.mapView?.moveCamera({ zoom: 8 }, 100)}
+  onACameraIdle={({ nativeEvent }) => {
     this.status = nativeEvent;
     this.cluster?.update(nativeEvent);
   }}

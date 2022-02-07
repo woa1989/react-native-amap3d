@@ -7,8 +7,8 @@ export default () => (
       draggable
       position={{ latitude: 39.806901, longitude: 116.397972 }}
       icon={require("../images/flag.png")}
-      onPress={() => alert("onPress")}
-      onDragEnd={({ nativeEvent }) =>
+      onAPress={() => alert("onAPress")}
+      onADragEnd={({ nativeEvent }) =>
         alert(`onDragEnd: ${nativeEvent.latitude}, ${nativeEvent.longitude}`)
       }
     />

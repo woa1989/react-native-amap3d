@@ -50,7 +50,7 @@ export default class extends React.Component {
   );
 
   render() {
-    const events = ["onLoad", "onPress", "onPressPoi", "onLongPress", "onCameraIdle", "onLocation"];
+    const events = ["onALoad", "onAPress", "onAPressPoi", "onALongPress", "onACameraIdle", "onALocation"];
     return (
       <View style={style.body}>
         <MapView
