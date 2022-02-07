@@ -15,7 +15,7 @@ class MultiPoint: UIView, Overlay, MAMultiPointOverlayRendererDelegate {
   var renderer: MAMultiPointOverlayRenderer?
   var icon: UIImage?
 
-  @objc var onPress: RCTDirectEventBlock = { _ in }
+  @objc var onAPress: RCTDirectEventBlock = { _ in }
 
   @objc func setIcon(_ icon: NSDictionary) {
     imageLoader?.loadImage(icon) { image in
@@ -42,6 +42,6 @@ class MultiPoint: UIView, Overlay, MAMultiPointOverlayRendererDelegate {
   }
 
   func multiPointOverlayRenderer(_: MAMultiPointOverlayRenderer!, didItemTapped item: MAMultiPointItem!) {
-    onPress(["index": (overlay?.items.firstIndex(of: item))!])
+    onAPress(["index": (overlay?.items.firstIndex(of: item))!])
   }
 }

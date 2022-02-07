@@ -32,14 +32,14 @@ class MapView: MAMapView, MAMapViewDelegate {
   var overlayMap: [MABaseOverlay: Overlay] = [:]
   var markerMap: [MAPointAnnotation: Marker] = [:]
 
-  @objc var onLoad: RCTBubblingEventBlock = { _ in }
-  @objc var onCameraMove: RCTBubblingEventBlock = { _ in }
-  @objc var onCameraIdle: RCTBubblingEventBlock = { _ in }
-  @objc var onPress: RCTBubblingEventBlock = { _ in }
-  @objc var onPressPoi: RCTBubblingEventBlock = { _ in }
-  @objc var onLongPress: RCTBubblingEventBlock = { _ in }
-  @objc var onLocation: RCTBubblingEventBlock = { _ in }
-  @objc var onCallback: RCTBubblingEventBlock = { _ in }
+  @objc var onALoad: RCTBubblingEventBlock = { _ in }
+  @objc var onACameraMove: RCTBubblingEventBlock = { _ in }
+  @objc var onACameraIdle: RCTBubblingEventBlock = { _ in }
+  @objc var onAPress: RCTBubblingEventBlock = { _ in }
+  @objc var onClickPoi: RCTBubblingEventBlock = { _ in }
+  @objc var onALongPress: RCTBubblingEventBlock = { _ in }
+  @objc var onALocation: RCTBubblingEventBlock = { _ in }
+  @objc var onACallback: RCTBubblingEventBlock = { _ in }
 
   @objc func setInitialCameraPosition(_ json: NSDictionary) {
     if !initialized {
@@ -67,7 +67,7 @@ class MapView: MAMapView, MAMapViewDelegate {
   }
 
   func callback(id: Double, data: [String: Any]) {
-    onCallback(["id": id, "data": data])
+    onACallback(["id": id, "data": data])
   }
 
   override func didAddSubview(_ subview: UIView) {
@@ -111,49 +111,49 @@ class MapView: MAMapView, MAMapViewDelegate {
     if let key = view.annotation as? MAPointAnnotation {
       let market = markerMap[key]!
       if newState == MAAnnotationViewDragState.starting {
-        market.onDragStart(nil)
+        market.onADragStart(nil)
       }
       if newState == MAAnnotationViewDragState.dragging {
-        market.onDrag(nil)
+        market.onADrag(nil)
       }
       if newState == MAAnnotationViewDragState.ending {
-        market.onDragEnd(view.annotation.coordinate.json)
+        market.onADragEnd(view.annotation.coordinate.json)
       }
     }
   }
 
   func mapView(_: MAMapView!, didAnnotationViewTapped view: MAAnnotationView!) {
     if let key = view.annotation as? MAPointAnnotation {
-      markerMap[key]?.onPress(nil)
+      markerMap[key]?.onAPress(nil)
     }
   }
 
   func mapInitComplete(_: MAMapView!) {
-    onLoad(nil)
+    onALoad(nil)
   }
 
   func mapView(_: MAMapView!, didSingleTappedAt coordinate: CLLocationCoordinate2D) {
-    onPress(coordinate.json)
+    onAPress(coordinate.json)
   }
 
   func mapView(_: MAMapView!, didTouchPois pois: [Any]!) {
     let poi = pois[0] as! MATouchPoi
-    onPressPoi(["name": poi.name!, "id": poi.uid!, "position": poi.coordinate.json])
+    onClickPoi(["name": poi.name!, "id": poi.uid!, "position": poi.coordinate.json])
   }
 
   func mapView(_: MAMapView!, didLongPressedAt coordinate: CLLocationCoordinate2D) {
-    onLongPress(coordinate.json)
+    onALongPress(coordinate.json)
   }
 
   func mapViewRegionChanged(_: MAMapView!) {
-    onCameraMove(cameraEvent)
+    onACameraMove(cameraEvent)
   }
 
   func mapView(_: MAMapView!, regionDidChangeAnimated _: Bool) {
-    onCameraIdle(cameraEvent)
+    onACameraIdle(cameraEvent)
   }
 
   func mapView(_: MAMapView!, didUpdate userLocation: MAUserLocation!, updatingLocation _: Bool) {
-    onLocation(userLocation.json)
+    onALocation(userLocation.json)
   }
 }

@@ -8,10 +8,10 @@ RCT_EXPORT_VIEW_PROPERTY(draggable, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(zIndex, int)
 RCT_EXPORT_VIEW_PROPERTY(icon, NSDictionary)
 
-RCT_EXPORT_VIEW_PROPERTY(onPress, RCTBubblingEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onDragStart, RCTBubblingEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onDrag, RCTBubblingEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onDragEnd, RCTBubblingEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onAPress, RCTBubblingEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onADragStart, RCTBubblingEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onADrag, RCTBubblingEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onADragEnd, RCTBubblingEventBlock)
 
 RCT_EXTERN_METHOD(update:(nonnull NSNumber *)reactTag)
 

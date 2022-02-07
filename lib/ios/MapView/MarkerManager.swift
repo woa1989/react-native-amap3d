@@ -30,10 +30,10 @@ class Marker: UIView {
   @objc var draggable = false { didSet { view?.isDraggable = draggable } }
   @objc var zIndex = 1 { didSet { view?.zIndex = zIndex } }
 
-  @objc var onPress: RCTDirectEventBlock = { _ in }
-  @objc var onDragStart: RCTDirectEventBlock = { _ in }
-  @objc var onDrag: RCTDirectEventBlock = { _ in }
-  @objc var onDragEnd: RCTDirectEventBlock = { _ in }
+  @objc var onAPress: RCTDirectEventBlock = { _ in }
+  @objc var onADragStart: RCTDirectEventBlock = { _ in }
+  @objc var onADrag: RCTDirectEventBlock = { _ in }
+  @objc var onADragEnd: RCTDirectEventBlock = { _ in }
 
   @objc func setIcon(_ icon: NSDictionary?) {
     imageLoader?.loadImage(icon) { image in

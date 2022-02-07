@@ -1,9 +1,13 @@
-import { NativeModules } from "react-native";
+import { NativeModules, Platform } from "react-native";
 
 const { AMapSdk } = NativeModules;
 
 export function init(apiKey?: string) {
-  AMapSdk.init(apiKey);
+  if (Platform.OS === "android") {
+    AMapSdk.init(apiKey);
+  } else {
+    AMapSdk.setApiKey(apiKey);
+  }
 }
 
 export function getVersion(): Promise<string> {
