@@ -81,7 +81,7 @@ class MapView(context: ThemedReactContext) : TextureMapView(context) {
         emit(
           it[0].toInt(),
           "onAPress",
-          Arguments.createMap().apply { putInt("index", it[1].toInt()) },
+          Arguments.createMap().apply { putInt("index", it[1].toInt()) }
         )
       }
       false

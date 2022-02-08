@@ -14,7 +14,7 @@ import qiuxiang.amap3d.toLatLng
 internal class MapViewManager : ViewGroupManager<MapView>() {
   private val commands = mapOf(
     "moveCamera" to { view: MapView, args: ReadableArray? -> view.moveCamera(args) },
-    "call" to { view: MapView, args: ReadableArray? -> view.call(args) },
+    "call" to { view: MapView, args: ReadableArray? -> view.call(args) }
   )
 
   override fun getName(): String {
@@ -57,7 +57,7 @@ internal class MapViewManager : ViewGroupManager<MapView>() {
       "onACameraMove",
       "onACameraIdle",
       "onALocation",
-      "onACallback",
+      "onACallback"
     )
   }
 
