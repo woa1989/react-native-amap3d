@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.platforms    = { :ios => "10.0" }
   s.source       = { :git => "https://github.com/woa1989/react-native-amap3d.git", :tag => "#{s.version}" }
 
-  s.source_files = "**/*.{h,m,mm,swift}"
+  s.source_files = "lib/ios/**/*.{h,m,mm,swift}"
 
   s.dependency "React-Core"
   s.dependency 'AMap3DMap', "~> 8.0.1"
